@@ -8,7 +8,7 @@ require('lualine').setup {
     lualine_a = {
       {
         'filename',
-        path = 0,
+        path = 1,
       }
     }
   }

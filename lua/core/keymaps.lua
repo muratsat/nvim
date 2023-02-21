@@ -17,5 +17,17 @@ keymap.set("v", ">", ">gv")
 keymap.set("v", "<", "<gv")
 
 
--- open terminal in the bottom like int VSCode
-keymap.set('n', '<C-t>', ':FloatermToggle<CR>')
+keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
+keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:FloatermToggle<CR>')
+
+keymap.set('n', '<F7>', ':FloatermNew<CR>')
+keymap.set('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>')
+keymap.set('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>')
+
+
+keymap.set('n', '<C-g>', ':LazyGit<CR>')
+
+-- preview current hunk changes
+keymap.set('n', '<leader>h', ':GitGutterPreviewHunk<CR>')
+keymap.set('n', '<leader>u', ':GitGutterUndoHunk<CR>')
+

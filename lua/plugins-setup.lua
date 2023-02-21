@@ -58,6 +58,13 @@ return packer.startup(function(use)
   -- Additional lua configuration, makes nvim stuff amazing!
   use 'folke/neodev.nvim'
 
-  -- copilot
+  -- github copilot
   use 'github/copilot.vim'
+
+  -- git integration and hunk previews
+  use 'airblade/vim-gitgutter'
+  use 'tpope/vim-fugitive'
+  use 'kdheepak/lazygit.nvim'
+
+  use 'mbbill/undotree'
 end)

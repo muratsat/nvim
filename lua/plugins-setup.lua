@@ -8,7 +8,8 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- appearance
-  use 'navarasu/onedark.nvim'
+  -- use 'navarasu/onedark.nvim'
+  use 'folke/tokyonight.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'

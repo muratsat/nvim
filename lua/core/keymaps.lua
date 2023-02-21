@@ -11,12 +11,14 @@ keymap.set("n", "x", '"_x')
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
-keymap.set("n", "<leader>nh", ":nohl<CR>")
+keymap.set("n", "<leader>nh", ":nohl<CR>") -- no highlight
 
+-- move selected block one indent left/right
 keymap.set("v", ">", ">gv")
 keymap.set("v", "<", "<gv")
 
 
+    -- Terminal --
 keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
 keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:FloatermToggle<CR>')
 
@@ -25,6 +27,7 @@ keymap.set('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>')
 keymap.set('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>')
 
 
+    -- Git mapppings --
 keymap.set('n', '<C-g>', ':LazyGit<CR>')
 
 -- preview current hunk changes

@@ -33,4 +33,6 @@ keymap.set('n', '<C-g>', ':LazyGit<CR>')
 -- preview current hunk changes
 keymap.set('n', '<leader>h', ':GitGutterPreviewHunk<CR>')
 keymap.set('n', '<leader>u', ':GitGutterUndoHunk<CR>')
+keymap.set('n', '<leader>[', ':GitGutterPrevHunk<CR>')
+keymap.set('n', '<leader>]', ':GitGutterNextHunk<CR>')
 

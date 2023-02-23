@@ -37,14 +37,6 @@ return packer.startup(function(use)
   -- syntax highlighting
   use 'nvim-treesitter/nvim-treesitter'
 
-  -- color picker
-  use {
-    "max397574/colortils.nvim",
-    cmd = "Colortils",
-    config = function()
-      require("colortils").setup()
-    end,
-  }
   -- fuzzy finder
   use {
     'nvim-telescope/telescope.nvim',
@@ -65,7 +57,13 @@ return packer.startup(function(use)
   use 'voldikss/vim-floaterm'
 
   -- commenting and autobrackets
-  use 'numToStr/Comment.nvim'
+  use {
+    'numToStr/Comment.nvim',
+    config = function ()
+      require('Comment').setup()
+    end
+  }
+
   use {
     'windwp/nvim-autopairs',
     config = function ()

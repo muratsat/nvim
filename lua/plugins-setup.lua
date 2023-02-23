@@ -101,8 +101,7 @@ return packer.startup(function(use)
   use 'github/copilot.vim'
 
   -- git integration and hunk previews
-  use 'airblade/vim-gitgutter'
-  use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
   use 'kdheepak/lazygit.nvim'
 
   use 'mbbill/undotree'

@@ -31,8 +31,8 @@ keymap.set('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>')
 keymap.set('n', '<C-g>', ':LazyGit<CR>')
 
 -- preview current hunk changes
-keymap.set('n', '<leader>h', ':GitGutterPreviewHunk<CR>')
-keymap.set('n', '<leader>u', ':GitGutterUndoHunk<CR>')
-keymap.set('n', '<leader>[', ':GitGutterPrevHunk<CR>')
-keymap.set('n', '<leader>]', ':GitGutterNextHunk<CR>')
+keymap.set('n', '<leader>h', ':Gitsigns preview_hunk<CR>')
+keymap.set('n', '<leader>u', ':Gitsigns reset_hunk<CR>')
+keymap.set('n', '<leader>[', ':Gitsigns prev_hunk<CR>')
+keymap.set('n', '<leader>]', ':Gitsigns next_hunk<CR>')
 

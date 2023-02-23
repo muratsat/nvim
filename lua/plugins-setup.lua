@@ -59,7 +59,6 @@ return packer.startup(function(use)
   }
 
   -- plugin for editor tabs
-  use 'nvim-tree/nvim-web-devicons'
   use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
 
   -- integrated terminal
@@ -67,7 +66,12 @@ return packer.startup(function(use)
 
   -- commenting and autobrackets
   use 'numToStr/Comment.nvim'
-  use 'windwp/nvim-autopairs'
+  use {
+    'windwp/nvim-autopairs',
+    config = function ()
+      require('nvim-autopairs').setup()
+    end
+  }
 
   -- LSP
   use {
@@ -101,7 +105,12 @@ return packer.startup(function(use)
   use 'github/copilot.vim'
 
   -- git integration and hunk previews
-  use 'lewis6991/gitsigns.nvim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function ()
+      require('gitsigns').setup()
+    end
+  }
   use 'kdheepak/lazygit.nvim'
 
   use 'mbbill/undotree'

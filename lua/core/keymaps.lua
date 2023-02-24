@@ -39,3 +39,7 @@ keymap.set('n', '<leader>u', ':Gitsigns reset_hunk<CR>')
 keymap.set('n', '<leader>[', ':Gitsigns prev_hunk<CR>')
 keymap.set('n', '<leader>]', ':Gitsigns next_hunk<CR>')
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  command = "nnoremap <buffer> <C-A-n> :split<CR>:te g++ -std=c++14 -Wshadow -Wall -o %:t:r % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./%:t:r<CR>i"
+})

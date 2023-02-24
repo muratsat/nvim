@@ -25,6 +25,7 @@ keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
 keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:FloatermToggle<CR>')
 
 keymap.set('n', '<F7>', ':FloatermNew<CR>')
+keymap.set('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>')
 keymap.set('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>')
 keymap.set('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>')
 

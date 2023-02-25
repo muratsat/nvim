@@ -33,6 +33,7 @@ return packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
+  use 'NvChad/nvim-colorizer.lua'
 
   -- syntax highlighting
   use 'nvim-treesitter/nvim-treesitter'
@@ -101,11 +102,6 @@ return packer.startup(function(use)
 
   -- github copilot
   use 'github/copilot.vim'
-  use({
-    "jonahgoldwastaken/copilot-status.nvim",
-    after = { "zbirenbaum/copilot.lua" },
-    event = "BufReadPost",
-  })
 
   -- git integration and hunk previews
   use {

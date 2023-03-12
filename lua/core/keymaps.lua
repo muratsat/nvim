@@ -23,6 +23,7 @@ keymap.set("v", "<", "<gv")
     -- Terminal --
 keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
 keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:FloatermToggle<CR>')
+keymap.set('t', '<leader><Esc>', '<C-\\><C-n><CR>')
 
 keymap.set('n', '<F7>', ':FloatermNew<CR>')
 keymap.set('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>')

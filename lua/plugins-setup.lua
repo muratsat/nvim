@@ -33,7 +33,6 @@ return packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
-  use 'NvChad/nvim-colorizer.lua'
 
   -- syntax highlighting
   use 'nvim-treesitter/nvim-treesitter'

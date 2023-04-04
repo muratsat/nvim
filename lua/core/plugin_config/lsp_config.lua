@@ -60,7 +60,8 @@ local servers = {
   pylsp = {},
   -- rust_analyzer = {},
   tsserver = {},
-
+  cssls = {},
+  html = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -103,6 +104,11 @@ local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
 
 null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.completion.spell,
+  },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.keymap.set("n", "<Leader>f", function()

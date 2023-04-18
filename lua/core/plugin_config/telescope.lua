@@ -23,3 +23,8 @@ keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' }
 keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { desc = 'Open file browser' })
+
+-- search in current file
+vim.keymap.set('n', '<leader>/', function()
+  builtin.current_buffer_fuzzy_find()
+end, { desc = '[/] Fuzzily search in current buffer' })

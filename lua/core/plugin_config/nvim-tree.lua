@@ -5,6 +5,9 @@ require("nvim-tree").setup()
 
 vim.keymap.set('n', '<C-n>', ':NvimTreeFindFileToggle<CR>')
 
+-- set keymaps for nvim-tree with Ctrl+Shift+E
+vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>')
+
 -- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",

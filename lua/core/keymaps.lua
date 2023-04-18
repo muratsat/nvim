@@ -1,13 +1,43 @@
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
+-- Better window movement
+keymap.set("n", "<C-h>", "<C-w>h")
+keymap.set("n", "<C-j>", "<C-w>j")
+keymap.set("n", "<C-k>", "<C-w>k")
+keymap.set("n", "<C-l>", "<C-w>l")
+
+-- Move selected line / block of text in visual mode
+keymap.set("x", "K", ":move '<-2<CR>gv-gv")
+keymap.set("x", "J", ":move '>+1<CR>gv-gv")
+
+-- Resize with arrows
+keymap.set("n", "<C-Up>", ":resize -2<CR>")
+keymap.set("n", "<C-Down>", ":resize +2<CR>")
+keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
+keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
+
+-- Move current line / block with Alt-j/k ala vscode.
+keymap.set("n", "<A-j>", ":m .+1<CR>==")
+keymap.set("n", "<A-k>", ":m .-2<CR>==")
+keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+
+
+-- comment shortcut like vscode
+keymap.set("n", "<C-_>", ":CommentToggle<CR>")
+keymap.set("v", "<C-_>", ":CommentToggle<CR>")
+
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
 
-keymap.set('i', '<C-H>', ' <Esc>dbi')
+-- quick erase with ctrlackspace
+keymap.set("i", "<C-H>", "<C-W>")
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>")      -- increment

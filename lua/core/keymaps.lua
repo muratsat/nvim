@@ -26,9 +26,12 @@ keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 
--- comment shortcut like vscode
-keymap.set("n", "<C-_>", ":CommentToggle<CR>")
-keymap.set("v", "<C-_>", ":CommentToggle<CR>")
+-- format on save 
+keymap.set("n", "<C-f>", ":Prettier<CR>")
+keymap.set("i", "<C-f>", ":Prettier<CR>")
+
+keymap.set('n', '<C-s>', ":w<CR>")
+keymap.set('i', '<C-s>', "<Esc>:w<CR>a")
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")

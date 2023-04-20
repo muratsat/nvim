@@ -26,12 +26,12 @@ keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 
--- format on save 
-keymap.set("n", "<C-f>", ":Prettier<CR>")
-keymap.set("i", "<C-f>", ":Prettier<CR>")
+-- format on save
+keymap.set("n", "<C-f>", "<Cmd>Format<CR>")
+keymap.set("i", "<C-f>", "<Cmd>Format<CR>")
 
-keymap.set('n', '<C-s>', ":w<CR>")
-keymap.set('i', '<C-s>', "<Esc>:w<CR>a")
+keymap.set('n', '<C-s>', "<Cmd>Prettier<CR><Cmd>w<CR>")
+keymap.set('i', '<C-s>', "<Cmd>Prettier<CR><Cmd>w<CR>")
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")

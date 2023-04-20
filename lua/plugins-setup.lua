@@ -25,7 +25,7 @@ if not status then
 end
 
 return packer.startup(function(use)
-  -- paccage manager
+  -- package manager
   use 'wbthomason/packer.nvim'
 
   -- appearance
@@ -102,6 +102,13 @@ return packer.startup(function(use)
 
   -- Additional lua configuration, makes nvim stuff amazing!
   use 'folke/neodev.nvim'
+
+  -- markdown preview
+  -- install without yarn or npm
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   -- github copilot
   use 'github/copilot.vim'

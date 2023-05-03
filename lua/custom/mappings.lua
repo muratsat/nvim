@@ -12,6 +12,7 @@ M.general = {
     }
   },
   i = {
+    ["<C-s>"] = { "<cmd> w<leader>tt <CR>", "save file" },
   },
   v = {
     [">"] = {">gv"},

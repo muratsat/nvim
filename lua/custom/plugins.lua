@@ -74,6 +74,15 @@ local plugins = {
     cmd = 'LazyGit',
   },
 
+  -- markdown preview
+  {
+    "iamcco/markdown-preview.nvim",
+    event = "BufRead",
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

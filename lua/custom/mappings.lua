@@ -4,6 +4,12 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    ["<C-g>"] = { "<cmd> LazyGit<CR>", "lazygit" },
+    ["<leader>tt"] = {
+      function ()
+        require('base46').toggle_transparency()
+      end, "toggle transparency"
+    }
   },
   i = {
   },
@@ -80,29 +86,32 @@ M.tabufline = {
     -- move buffer
     ["<A-.>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflineMove(1)
+        require("nvchad_ui.tabufline").move_buf(1)
       end,
       "move buffer right",
     },
 
     ["<A-,>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflineMove(-1)
+        require("nvchad_ui.tabufline").move_buf(-1)
       end,
       "move buffer left",
+    },
+
+    -- close buffer + hide terminal buffer
+    ["<A-w>"] = {
+      function()
+        require("nvchad_ui.tabufline").close_buffer()
+      end,
+      "close buffer",
     },
   },
 }
 
 for i = 1, 9, 1 do
-  local mapping = {
-    function()
-      require("nvchad_ui.tabufline").tabuflineGo(i)
-    end,
-    "go to buffer " .. i,
-  }
-  M.tabufline.n["<A-" .. i .. ">"] = mapping
-  M.tabufline.i["<A-" .. i .. ">"] = mapping
+  vim.keymap.set("n", string.format("<A-%s>", i), function()
+    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  end)
 end
 
 M.nvterm = {

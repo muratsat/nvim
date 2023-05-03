@@ -34,6 +34,14 @@ local plugins = {
   },
 
   {
+    "windwp/nvim-ts-autotag",
+    lazy = false,
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
@@ -59,6 +67,11 @@ local plugins = {
   {
     'github/copilot.vim',
     lazy = false,
+  },
+
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = 'LazyGit',
   },
 
   -- To make a plugin not be loaded

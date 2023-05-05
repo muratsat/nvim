@@ -15,6 +15,11 @@ local plugins = {
           require "custom.configs.null-ls"
         end,
       },
+      -- code actions
+      {
+        "weilbith/nvim-code-action-menu",
+        cmd = "CodeActionMenu",
+      }
     },
     config = function()
       require "plugins.configs.lspconfig"

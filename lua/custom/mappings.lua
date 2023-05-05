@@ -119,6 +119,17 @@ M.nvterm = {
   plugin = true,
 
   n = {
+    ["<C-A-n>"] = {
+      function()
+        local ft_cmds = {
+          python = "clear && time python3 " .. vim.fn.expand "%",
+          cpp = string.format("clear && g++ -o %s %s -g && time ./%s", vim.fn.expand('%:t:r'), vim.fn.expand('%'), vim.fn.expand('%:t:r')),
+          javascript = "node " .. vim.fn.expand "%",
+        }
+        require("nvterm.terminal").send(ft_cmds[vim.bo.filetype], "horizontal")
+      end,
+      "run current file in terminal",
+    },
     -- toggle in terminal mode
     ["<A-t>"] = {
       function()

@@ -17,6 +17,25 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "round",
+    overriden_modules = function()
+      return {
+        cursor_position = function()
+          return "%3l:%-2c"
+        end,
+        cwd = function()
+          return ""
+        end,
+        LSP_status = function()
+          if rawget(vim, "lsp") then
+            for _, client in ipairs(vim.lsp.get_active_clients()) do
+              if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+                return (vim.o.columns > 100 and "%#St_LspStatus#" ..  client.name .. " ") or "   LSP "
+              end
+            end
+          end
+        end
+      }
+    end,
   },
 
   tabufline = {

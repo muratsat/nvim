@@ -171,9 +171,7 @@ M.lspconfig = {
     },
 
     ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
+      "<cmd> CodeActionMenu<CR>",
       "lsp code_action",
     },
 

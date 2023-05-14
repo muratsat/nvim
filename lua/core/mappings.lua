@@ -3,6 +3,12 @@
 local M = {}
 
 M.general = {
+  c = {
+    ["<C-h>"] = { "<Left>", "move left" },
+    ["<C-l>"] = { "<Right>", "move right" },
+    ["<C-j>"] = { "<Down>", "move down" },
+    ["<C-k>"] = { "<Up>", "move up" },
+  },
   i = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },

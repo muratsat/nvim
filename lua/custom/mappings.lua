@@ -9,6 +9,10 @@ M.general = {
       function ()
         require('base46').toggle_transparency()
       end, "toggle transparency"
+    },
+    ["<A-u>"] = {
+      "<cmd> UndotreeToggle<CR>",
+      "toggle undo tree",
     }
   },
   i = {

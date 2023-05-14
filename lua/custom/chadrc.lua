@@ -7,7 +7,7 @@ local highlights = require "custom.highlights"
 M.ui = {
   theme = "tokyonight",
   theme_toggle = { "tokyonight", "one_light" },
-  transparency = true,
+  transparency = false,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
@@ -21,9 +21,6 @@ M.ui = {
       return {
         cursor_position = function()
           return "%3l:%-2c"
-        end,
-        cwd = function()
-          return ""
         end,
         LSP_status = function()
           if rawget(vim, "lsp") then

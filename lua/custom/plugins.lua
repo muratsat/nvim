@@ -88,6 +88,12 @@ local plugins = {
     end,
   },
 
+  -- undo tree
+  {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+  }
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

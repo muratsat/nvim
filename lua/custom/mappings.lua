@@ -3,6 +3,7 @@ local M = {}
 
 M.general = {
   n = {
+    ["<leader>x"] = {"<cmd> !chmod +x %<CR>", "make executable"},
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-g>"] = { "<cmd> LazyGit<CR>", "lazygit" },
     ["<leader>tt"] = {
@@ -16,6 +17,7 @@ M.general = {
     }
   },
   i = {
+    ["<C-BS>"] = { "<C-W>"},
     ["<C-s>"] = { "<cmd> w<leader>tt <CR>", "save file" },
   },
   v = {
@@ -117,6 +119,9 @@ for i = 1, 9, 1 do
   vim.keymap.set("n", string.format("<A-%s>", i), function()
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end)
+  vim.keymap.set("i", string.format("<A-%s>", i), function()
+    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  end)
 end
 
 M.nvterm = {
@@ -129,6 +134,7 @@ M.nvterm = {
           python = "clear && time python3 " .. vim.fn.expand "%",
           cpp = string.format("clear && g++ -o %s %s -g && time ./%s", vim.fn.expand('%:t:r'), vim.fn.expand('%'), vim.fn.expand('%:t:r')),
           javascript = "node " .. vim.fn.expand "%",
+          sh = "bash " .. vim.fn.expand "%",
         }
         require("nvterm.terminal").send(ft_cmds[vim.bo.filetype], "horizontal")
       end,
@@ -169,5 +175,12 @@ M.nvterm = {
 }
 
 -- more keybinds!
+--
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 return M

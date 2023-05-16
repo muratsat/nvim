@@ -22,6 +22,9 @@ M.ui = {
         cursor_position = function()
           return "%3l:%-2c"
         end,
+        cwd = function ()
+          return ""
+        end,
         LSP_status = function()
           if rawget(vim, "lsp") then
             for _, client in ipairs(vim.lsp.get_active_clients()) do

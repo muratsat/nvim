@@ -15,10 +15,10 @@ M.general = {
     ["<C-e>"] = { "<End>", "end of line" },
 
     -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "move left" },
-    ["<C-l>"] = { "<Right>", "move right" },
-    ["<C-j>"] = { "<Down>", "move down" },
-    ["<C-k>"] = { "<Up>", "move up" },
+    -- ["<C-h>"] = { "<Left>", "move left" },
+    -- ["<C-l>"] = { "<Right>", "move right" },
+    -- ["<C-j>"] = { "<Down>", "move down" },
+    -- ["<C-k>"] = { "<Up>", "move up" },
   },
 
   n = {

@@ -18,6 +18,7 @@ M.general = {
   },
   i = {
     ["<C-BS>"] = { "<C-W>"},
+    ["<C-H>"] = { "<C-W>"},
     ["<C-s>"] = { "<cmd> w<leader>tt <CR>", "save file" },
   },
   v = {

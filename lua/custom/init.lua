@@ -13,6 +13,7 @@ opt.relativenumber = true
 opt.scrolloff = 8
 opt.hlsearch = false
 opt.incsearch = true
+opt.backspace = [[indent,eol,start]]
 
 -- copilot
 -- vim.g.copilot_no_tab_map = true

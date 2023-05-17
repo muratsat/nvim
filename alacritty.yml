@@ -64,12 +64,12 @@ window:
   opacity: 0.8
   background-color: #010101
   dimensions:
-    columns: 82
-    lines: 27
+    columns: 90
+    lines: 24
 
 font:
   normal:
-    family: Hack Nerd Font Mono
+    family: JetBrainsMono Nerd Font
     style: Regular
 
   size: 13

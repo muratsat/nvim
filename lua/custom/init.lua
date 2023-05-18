@@ -14,6 +14,7 @@ opt.scrolloff = 8
 opt.hlsearch = false
 opt.incsearch = true
 opt.backspace = [[indent,eol,start]]
+opt.mouse = ""
 
 -- copilot
 -- vim.g.copilot_no_tab_map = true

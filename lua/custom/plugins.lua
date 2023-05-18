@@ -19,7 +19,15 @@ local plugins = {
       {
         "weilbith/nvim-code-action-menu",
         cmd = "CodeActionMenu",
-      }
+      },
+      -- lightbulb
+      {
+        "kosayoda/nvim-lightbulb",
+        config = function()
+          require('nvim-lightbulb').setup({ autocmd = { enabled = true }})
+        end,
+        event = "CursorHold",
+      },
     },
     config = function()
       require "plugins.configs.lspconfig"

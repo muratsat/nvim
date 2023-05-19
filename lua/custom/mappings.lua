@@ -137,6 +137,7 @@ M.nvterm = {
           javascript = "node " .. vim.fn.expand "%",
           sh = "bash " .. vim.fn.expand "%",
         }
+        vim.cmd [[w]]
         require("nvterm.terminal").send(ft_cmds[vim.bo.filetype], "horizontal")
       end,
       "run current file in terminal",

@@ -6,6 +6,11 @@ M.general = {
     ["<leader>x"] = {"<cmd> !chmod +x %<CR>", "make executable"},
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-g>"] = { "<cmd> LazyGit<CR>", "lazygit" },
+    ["<leader>tw"] = {
+      function ()
+        vim.wo.wrap = not vim.wo.wrap
+      end, "toggle wrap"
+    },
     ["<leader>tt"] = {
       function ()
         require('base46').toggle_transparency()
@@ -135,6 +140,7 @@ M.nvterm = {
           python = "clear && time python3 " .. vim.fn.expand "%",
           cpp = string.format("clear && g++ -o %s %s -g && time ./%s", vim.fn.expand('%:t:r'), vim.fn.expand('%'), vim.fn.expand('%:t:r')),
           javascript = "node " .. vim.fn.expand "%",
+          lua = "lua " .. vim.fn.expand "%",
           sh = "bash " .. vim.fn.expand "%",
         }
         vim.cmd [[w]]

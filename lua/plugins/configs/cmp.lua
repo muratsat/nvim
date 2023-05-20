@@ -14,9 +14,31 @@ local formatting_style = {
   -- default fields order i.e completion word + item.kind + item.kind icons
   fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
 
-  format = function(_, item)
+  format = function(entry, item)
     local icons = require("nvchad_ui.icons").lspkind
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
+
+    if item.kind == 'Color' and entry.completion_item.documentation then
+      local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
+
+      if not r then
+        r, g, b = string.match(entry.completion_item.documentation, "#(%x%x)(%x%x)(%x%x)")
+        r = tonumber(r, 16)
+        g = tonumber(g, 16)
+        b = tonumber(b, 16)
+      end
+
+      if r then
+        local color = string.format('%02x', r) .. string.format('%02x', g) ..string.format('%02x', b)
+        local group = 'Tw_' .. color
+        if vim.fn.hlID(group) < 1 then
+          vim.api.nvim_set_hl(0, group, {bg = '#' .. color})
+        end
+        item.kind = '  '
+        item.kind_hl_group = group
+        return item
+      end
+    end
 
     if cmp_style == "atom" or cmp_style == "atom_colored" then
       icon = " " .. icon .. " "

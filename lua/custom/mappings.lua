@@ -19,16 +19,18 @@ M.general = {
     ["<A-u>"] = {
       "<cmd> UndotreeToggle<CR>",
       "toggle undo tree",
-    }
+    },
   },
   i = {
     ["<C-BS>"] = { "<C-W>"},
     ["<C-H>"] = { "<C-W>"},
     ["<C-s>"] = { "<cmd> w<leader>tt <CR>", "save file" },
+    ["<A-h>"] = {"<C-d>", "indent to the left"},
+    ["<A-l>"] = {"<C-t>", "indent to the right"},
   },
   v = {
-    [">"] = {">gv"},
-    ["<"] = {"<gv"},
+    ["<A-h>"] = {"<gv", "indent to the left"},
+    ["<A-l>"] = {">gv", "indent to the right"},
   },
   t = {
     ["<C-h>"] = { "<C-\\><C-N><C-w>h", "window left" },

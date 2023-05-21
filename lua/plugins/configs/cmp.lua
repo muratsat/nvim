@@ -10,6 +10,20 @@ local field_arrangement = {
   atom_colored = { "kind", "abbr", "menu" },
 }
 
+local find_color = function (text)
+  local _, _, r, g, b = string.find(text, '^rgb%((%d+), (%d+), (%d+)')
+  local color = nil
+  if r then
+    color = string.format('%02x', r) .. string.format('%02x', g) ..string.format('%02x', b)
+  else
+    color = string.match(text, '#(%x%x%x%x%x%x)')
+  end
+  if not color then
+    color = string.match(text, '#(%x%x%x)')
+  end
+  return color
+end
+
 local formatting_style = {
   -- default fields order i.e completion word + item.kind + item.kind icons
   fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
@@ -19,17 +33,8 @@ local formatting_style = {
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
     if item.kind == 'Color' and entry.completion_item.documentation then
-      local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
-
-      if not r then
-        r, g, b = string.match(entry.completion_item.documentation, "#(%x%x)(%x%x)(%x%x)")
-        r = tonumber(r, 16)
-        g = tonumber(g, 16)
-        b = tonumber(b, 16)
-      end
-
-      if r then
-        local color = string.format('%02x', r) .. string.format('%02x', g) ..string.format('%02x', b)
+      local color = find_color(entry.completion_item.documentation)
+      if color then
         local group = 'Tw_' .. color
         if vim.fn.hlID(group) < 1 then
           vim.api.nvim_set_hl(0, group, {bg = '#' .. color})

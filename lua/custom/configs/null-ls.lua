@@ -7,9 +7,9 @@ end
 local b = null_ls.builtins
 
 local sources = {
-  null_ls.builtins.formatting.gofumpt,
-  null_ls.builtins.formatting.goimports_reviser,
-  null_ls.builtins.formatting.golines,
+  b.formatting.gofumpt,
+  b.formatting.goimports_reviser,
+  b.formatting.golines,
 
   -- webdev stuff
   b.formatting.deno_fmt,                                                    -- choosed deno for ts/js files cuz its very fast!
@@ -25,7 +25,9 @@ local sources = {
 local autogroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-  if client.supports_method "textDocument/formatting" then
+  local buf_ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local needs_to_format = buf_ft == "go"
+  if client.supports_method "textDocument/formatting" and needs_to_format then
     vim.api.nvim_clear_autocmds {
       group = autogroup,
       buffer = bufnr,

@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -24,7 +24,7 @@ local plugins = {
       {
         "kosayoda/nvim-lightbulb",
         config = function()
-          require('nvim-lightbulb').setup({ autocmd = { enabled = true }})
+          require("nvim-lightbulb").setup { autocmd = { enabled = true } }
         end,
         event = "CursorHold",
       },
@@ -38,7 +38,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -64,7 +64,7 @@ local plugins = {
     opts = {
       show_current_context = false,
       show_current_context_start = false,
-    }
+    },
   },
 
   -- Install a plugin
@@ -78,13 +78,13 @@ local plugins = {
 
   -- github copilot
   {
-    'github/copilot.vim',
+    "github/copilot.vim",
     lazy = false,
   },
 
   {
-    'kdheepak/lazygit.nvim',
-    cmd = 'LazyGit',
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
   },
 
   -- markdown preview
@@ -100,14 +100,24 @@ local plugins = {
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
-  }
+  },
+
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
 
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
-
 }
 
 return plugins

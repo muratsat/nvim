@@ -16,6 +16,13 @@ M.general = {
         require('base46').toggle_transparency()
       end, "toggle transparency"
     },
+    ["<leader>tm"] = {
+      function ()
+        print("toggle mouse")
+        vim.o.mouse = vim.o.mouse == "a" and "" or "a"
+      end,
+      "toggle mouse"
+    },
     ["<A-u>"] = {
       "<cmd> UndotreeToggle<CR>",
       "toggle undo tree",
@@ -132,22 +139,34 @@ for i = 1, 9, 1 do
   end)
 end
 
+local run_current_file = function()
+  local ft_cmds = {
+    go = "clear && go run " .. vim.fn.expand "%",
+    python = "clear && time python3 " .. vim.fn.expand "%",
+    cpp = string.format(
+      "clear && g++ -o %s %s -g && time ./%s",
+      vim.fn.expand "%:t:r",
+      vim.fn.expand "%",
+      vim.fn.expand "%:t:r"
+    ),
+    javascript = "clear && node " .. vim.fn.expand "%",
+    lua = "clear && lua " .. vim.fn.expand "%",
+    sh = "clear && bash " .. vim.fn.expand "%",
+  }
+  vim.cmd [[w]]
+  require("nvterm.terminal").send(ft_cmds[vim.bo.filetype], "horizontal")
+end
+
 M.nvterm = {
   plugin = true,
 
   n = {
+    ["<leader>0"] = {
+      run_current_file,
+      "run current file in terminal",
+    },
     ["<C-A-n>"] = {
-      function()
-        local ft_cmds = {
-          python = "clear && time python3 " .. vim.fn.expand "%",
-          cpp = string.format("clear && g++ -o %s %s -g && time ./%s", vim.fn.expand('%:t:r'), vim.fn.expand('%'), vim.fn.expand('%:t:r')),
-          javascript = "node " .. vim.fn.expand "%",
-          lua = "lua " .. vim.fn.expand "%",
-          sh = "bash " .. vim.fn.expand "%",
-        }
-        vim.cmd [[w]]
-        require("nvterm.terminal").send(ft_cmds[vim.bo.filetype], "horizontal")
-      end,
+      run_current_file,
       "run current file in terminal",
     },
     -- toggle in terminal mode

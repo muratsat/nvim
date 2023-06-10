@@ -56,4 +56,8 @@ M.nvimtree = {
   },
 }
 
+-- override cmp config from custom/configs/cmp.lua
+-- and merge with default config from plugins/cmp.lua
+
+
 return M

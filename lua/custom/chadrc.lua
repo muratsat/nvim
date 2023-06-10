@@ -7,7 +7,7 @@ local highlights = require "custom.highlights"
 M.ui = {
   theme = "tokyonight",
   theme_toggle = { "tokyonight", "one_light" },
-  transparency = true,
+  transparency = false,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
@@ -16,7 +16,7 @@ M.ui = {
     theme = "default", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "round",
+    separator_style = "block",
     overriden_modules = function()
       return {
         cursor_position = function()

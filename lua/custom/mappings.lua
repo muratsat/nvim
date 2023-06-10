@@ -54,6 +54,7 @@ M.telescope = {
   n = {
     -- find
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },
+    ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "search diagnostics"},
     ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "find files" },
     ["<leader>sa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
     ["<leader>sg"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
@@ -204,7 +205,6 @@ M.nvterm = {
 }
 
 -- more keybinds!
---
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
 vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")

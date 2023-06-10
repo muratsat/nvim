@@ -42,6 +42,15 @@ local plugins = {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      local override_cmp = require "custom.configs.cmp"
+      local default_config = require "plugins.configs.cmp"
+      return override_cmp(default_config)
+    end
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },

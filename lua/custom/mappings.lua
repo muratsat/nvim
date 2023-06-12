@@ -204,6 +204,15 @@ M.nvterm = {
   },
 }
 
+M.lspconfig = {
+  n = {
+    ["<leader>ca"] = {
+      "<cmd> CodeActionMenu <CR>",
+      "LSP code action",
+    },
+  },
+}
+
 -- more keybinds!
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")

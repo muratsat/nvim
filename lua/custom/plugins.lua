@@ -58,6 +58,7 @@ local plugins = {
   {
     "windwp/nvim-ts-autotag",
     lazy = false,
+    ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
     config = function()
       require("nvim-ts-autotag").setup()
     end,

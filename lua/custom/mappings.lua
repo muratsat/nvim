@@ -45,7 +45,12 @@ M.general = {
     ["<C-j>"] = { "<C-\\><C-N><C-w>j", "window down" },
     ["<C-k>"] = { "<C-\\><C-N><C-w>k", "window up" },
   },
-
+  c = {
+    ["<C-h>"] = { "<Left>", "command left" },
+    ["<C-l>"] = { "<Right>", "command right" },
+    ["<C-j>"] = { "<Down>", "command down" },
+    ["<C-k>"] = { "<Up>", "command up" },
+  },
 }
 
 M.telescope = {

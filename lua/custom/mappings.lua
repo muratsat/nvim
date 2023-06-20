@@ -89,6 +89,13 @@ M.gitsigns = {
   },
 }
 
+local go_to_last_buffer = function ()
+  local last_buffer = vim.fn.bufnr("#")
+  if last_buffer ~= -1 and last_buffer ~= vim.fn.bufnr("%") then
+    vim.api.nvim_set_current_buf(last_buffer)
+  end
+end
+
 M.tabufline = {
   plugin = true,
 
@@ -96,6 +103,19 @@ M.tabufline = {
   },
 
   n = {
+    -- go to last buffer 
+    ["<Tab>"] = {
+      function()
+        go_to_last_buffer()
+      end,
+      "go to last buffer",
+    },
+    ["<S-Tab>"] = {
+      function()
+        go_to_last_buffer()
+      end,
+      "go to last buffer",
+    },
     -- cycle through buffers
     ["<A-l>"] = {
       function()
@@ -136,12 +156,20 @@ M.tabufline = {
   },
 }
 
+local go_to_buffer = function(buffer_number)
+  local buffer_exists = vim.t.bufs[buffer_number] ~= nil
+  if buffer_exists then
+    vim.api.nvim_set_current_buf(vim.t.bufs[buffer_number])
+  end
+end
+
 for i = 1, 9, 1 do
-  vim.keymap.set("n", string.format("<A-%s>", i), function()
-    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  local cmd = string.format("<A-%s>", i)
+  vim.keymap.set("n", cmd, function()
+    go_to_buffer(i)
   end)
-  vim.keymap.set("i", string.format("<A-%s>", i), function()
-    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  vim.keymap.set("i", cmd, function()
+    go_to_buffer(i)
   end)
 end
 

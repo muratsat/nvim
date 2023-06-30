@@ -67,6 +67,12 @@ M.telescope = {
     ["<leader>sh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
     ["<leader>so"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
     ["<C-f>"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
+    ["gr"] = {
+      function ()
+        require("telescope.builtin").lsp_references()
+      end,
+      "fuzzy find refences"
+    }
   },
 }
 

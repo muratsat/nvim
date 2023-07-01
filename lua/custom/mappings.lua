@@ -163,13 +163,20 @@ M.tabufline = {
 }
 
 local go_to_buffer = function(buffer_number)
+  local buffers_count = #vim.t.bufs
+  if buffer_number > buffers_count then
+    buffer_number = buffers_count
+  elseif buffer_number == 0 then
+    buffer_number = 1
+  end
+
   local buffer_exists = vim.t.bufs[buffer_number] ~= nil
   if buffer_exists then
     vim.api.nvim_set_current_buf(vim.t.bufs[buffer_number])
   end
 end
 
-for i = 1, 9, 1 do
+for i = 0, 9, 1 do
   local cmd = string.format("<A-%s>", i)
   vim.keymap.set("n", cmd, function()
     go_to_buffer(i)

@@ -17,15 +17,8 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "block",
-    overriden_modules = function()
-      return {
-        cursor_position = function()
-          return "%3l:%-2c"
-        end,
-        cwd = function()
-          return ""
-        end,
-        LSP_status = function()
+    overriden_modules = function(modules)
+      modules[8] = (function ()
           if rawget(vim, "lsp") then
             for _, client in ipairs(vim.lsp.get_active_clients()) do
               if client.attached_buffers[vim.api.nvim_get_current_buf()] then
@@ -33,8 +26,13 @@ M.ui = {
               end
             end
           end
-        end,
-      }
+      end)()
+      modules[9] = (function ()
+          return ""
+      end)()
+      modules[10] = (function ()
+          return "%3l:%-2c"
+      end)()
     end,
   },
 
@@ -42,13 +40,9 @@ M.ui = {
     show_numbers = false,
     enabled = true,
     lazyload = true,
-    overriden_modules = function()
+    overriden_modules = function(modules)
       -- local modules = require "nvchad_ui.tabufline.modules"
-      return {
-        buttons = function()
-          return ""
-        end,
-      }
+      table.remove(modules, 4)
     end,
   },
 }

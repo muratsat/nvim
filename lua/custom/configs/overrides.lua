@@ -27,6 +27,13 @@ M.mason = {
     "lua-language-server",
     "stylua",
 
+    -- python stuff
+    "pyright",
+    "black",
+    "ruff",
+    "mypy",
+    "debugpy",
+
     -- web dev stuff
     "css-lsp",
     "html-lsp",

@@ -184,6 +184,9 @@ for i = 0, 9, 1 do
   vim.keymap.set("i", cmd, function()
     go_to_buffer(i)
   end)
+  vim.keymap.set("t", cmd, function()
+    go_to_buffer(i)
+  end)
 end
 
 local run_current_file = function()
@@ -257,6 +260,32 @@ M.lspconfig = {
       "LSP code action",
     },
   },
+}
+
+M.dap = {
+  plugin = true,
+  n = {
+    ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>"},
+    -- ["<leader>dc"] = {"<cmd> DapContinue <CR>"},
+    -- ["<leader>ds"] = {"<cmd> DapStepInto <CR>"},
+    -- ["<leader>dn"] = {"<cmd> DapStepOver <CR>"},
+    -- ["<leader>do"] = {"<cmd> DapStepOut <CR>"},
+    -- ["<leader>dB"] = {"<cmd> DapSetBreakpoint <CR>"},
+    -- ["<leader>dl"] = {"<cmd> DapListBreakpoints <CR>"},
+    -- ["<leader>dr"] = {"<cmd> DapReplOpen <CR>"},
+    -- ["<leader>dt"] = {"<cmd> DapUIOpen <CR>"},
+  }
+}
+
+M.dap_python = {
+  plugin = true,
+  n = {
+    ["<leader>dpr"] = {
+      function ()
+        require("dap-python").test_method()
+      end
+    }
+  }
 }
 
 -- more keybinds!
